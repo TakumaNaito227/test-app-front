@@ -6,7 +6,9 @@
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
-        "generate": "nuxt generate"
+        "generate": "nuxt generate",
+        "up": "docker-compose up -d",
+        "down": "docker-compose down"
     },
     "dependencies": {
         "@nuxtjs/axios": "^5.13.6",
