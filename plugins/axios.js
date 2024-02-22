@@ -7,7 +7,7 @@ export default ({ $axios }) => {
   $axios.onResponse((config) => {
     console.log(config);
   });
-  // エラーログï
+  // エラーログ
   $axios.onError((e) => {
     console.log(e.response);
   });
