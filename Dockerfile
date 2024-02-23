@@ -11,3 +11,13 @@ ENV HOME=/${WORKDIR} \
 	API_URL=${API_URL}
 
 WORKDIR ${HOME}
+
+# package.jsonとyarn.lockをコピーしてからyarn installを実行する
+COPY package*.json ./
+RUN yarn install
+
+# コンテナにNuxtプロジェクトをコピー
+COPY . ./
+
+# ビルド
+RUN yarn run build
