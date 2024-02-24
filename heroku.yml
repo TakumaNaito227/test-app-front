@@ -6,6 +6,6 @@ build:
     web: Dockerfile
   config:
     WORKDIR: app
-    API_URL: "https://rails-nuxt-v1-api.herokuapp.com"
+    API_URL: "https://rails-nuxt-v1-api-5e4b338c2b1e.herokuapp.com"
 run:
   web: yarn run start
