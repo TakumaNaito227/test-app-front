@@ -19,6 +19,7 @@
                 </tr>
             </tbody>
         </table>
+
         <div v-else>ユーザーが取得できませんでした</div>
     </div>
 </template>
@@ -30,17 +31,15 @@ export default {
         await $axios.$get("/api/v1/users").then((res) => (users = res));
         return { users };
     },
-    methods: {
-        dateFormat(date) {
-            if (isNaN(new Date(date).getTime())) {
-                // 日付が無効な場合の処理
-                return 'Invalid Date'; // または適切なフォールバック値
-            }
-            const dateTimeFormat = new Intl.DateTimeFormat("ja", {
-                dateStyle: "medium",
-                timeStyle: "short",
-            });
-            return dateTimeFormat.format(new Date(date));
+    computed: {
+        dateFormat() {
+            return (date) => {
+                const dateTimeFormat = new Intl.DateTimeFormat("ja", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                });
+                return dateTimeFormat.format(new Date(date));
+            };
         },
     },
 };
