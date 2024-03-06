@@ -27,18 +27,21 @@
                     <template v-else> ユーザーが存在しません </template>
                 </v-simple-table>
             </v-card-text>
-            <v-card-title>
-                Vuetifyの導入（オリジナルカラーの確認）
-            </v-card-title>
+            <v-card-title> VuetifyカスタムCSSの検証 </v-card-title>
             <v-card-text>
-                <v-btn
-                    v-for="(color, i) in colors"
-                    :key="`color-${i}`"
-                    :color="color"
-                    class="mr-2"
+                ipad（768px）とmobile（426px）で表示・非表示
+            </v-card-text>
+            <v-card-text>
+                <v-card
+                    v-for="(cls, i) in customClass"
+                    :key="`cls-${i}`"
+                    :color="cls.color"
+                    :class="cls.name"
                 >
-                    {{ color }}
-                </v-btn>
+                    <v-card-text>
+                        {{ cls.des }}
+                    </v-card-text>
+                </v-card>
             </v-card-text>
         </v-card>
     </v-container>
@@ -62,6 +65,28 @@ export default {
                 "warning",
                 "error",
                 "background",
+            ],
+            customClass: [
+                {
+                    name: "hidden-ipad-and-down",
+                    color: "error",
+                    des: "ipad未満で隠す",
+                },
+                {
+                    name: "hidden-ipad-and-up",
+                    color: "info",
+                    des: "ipad以上で隠す",
+                },
+                {
+                    name: "hidden-mobile-and-down",
+                    color: "success",
+                    des: "mobile未満で隠す",
+                },
+                {
+                    name: "hidden-mobile-and-up",
+                    color: "warning",
+                    des: "mobile以上で隠す",
+                },
             ],
         };
     },
