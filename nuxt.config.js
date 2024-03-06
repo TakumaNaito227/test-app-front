@@ -21,7 +21,7 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: ['~/assets/sass/main.scss'],
+    css: ["~/assets/sass/main.scss"],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: ["plugins/axios"],
@@ -33,7 +33,7 @@ export default {
     buildModules: ["@nuxtjs/vuetify"],
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: ["@nuxtjs/axios"],
+    modules: ["@nuxtjs/axios", "@nuxtjs/i18n"],
 
     axios: {
         // 環境変数API_URLが優先される
@@ -55,6 +55,21 @@ export default {
                     error: "FB8678",
                     background: "f6f6f4",
                 },
+            },
+        },
+    },
+
+    i18n: {
+        locales: ["ja", "en"],
+        defaultLocale: "ja",
+        vueI18n: {
+            fallbackLocale: "ja",
+            // i18nの警告を表示するかどうか
+            // silentTranslationWarn: true,
+            silentFallbackWarn: true,
+            messages: {
+                ja: require("./locales/ja.json"),
+                en: require("./locales/en.json"),
             },
         },
     },
